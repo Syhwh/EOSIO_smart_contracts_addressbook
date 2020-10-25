@@ -6,7 +6,7 @@ using namespace eosio;
 addressbook::addressbook(name self_contract, name user, datastream<const char *> sd)
 		: contract(self_contract, user, sd), at(self_contract, self_contract.value) {}
 
-void addressbook::adduser(name user, std::string first_name, std::string last_name,
+void addressbook::adduser(name user, std::string first_name, std::string last_name, uint64_t age,
 													std::string street, std::string city, std::string state)
 {
 	require_auth(user);
@@ -17,6 +17,7 @@ void addressbook::adduser(name user, std::string first_name, std::string last_na
 			row.key = user;
 			row.first_name = first_name;
 			row.last_name = last_name;
+			row.age = age;
 			row.street = street;
 			row.city = city;
 			row.state = state;
@@ -28,6 +29,7 @@ void addressbook::adduser(name user, std::string first_name, std::string last_na
 			row.key = user;
 			row.first_name = first_name;
 			row.last_name = last_name;
+			row.age = age;
 			row.street = street;
 			row.city = city;
 			row.state = state;
